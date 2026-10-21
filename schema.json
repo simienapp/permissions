@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Simien pre-approved permissions",
+  "type": "object",
+  "required": ["version", "packages"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "packages": {
+      "type": "object",
+      "propertyNames": { "pattern": "^(@[a-z0-9._~-]+/)?[a-z0-9._~-]+$" },
+      "additionalProperties": { "$ref": "#/$defs/package" }
+    }
+  },
+  "$defs": {
+    "package": {
+      "type": "object",
+      "required": ["reason"],
+      "additionalProperties": false,
+      "minProperties": 2,
+      "properties": {
+        "reason": { "type": "string", "minLength": 10 },
+        "install": { "$ref": "#/$defs/grant" },
+        "x": { "$ref": "#/$defs/grant" }
+      }
+    },
+    "grant": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "net": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9.-]+(:[0-9]+)?$" }, "uniqueItems": true },
+        "write": { "type": "array", "items": { "$ref": "#/$defs/path" }, "uniqueItems": true },
+        "read": { "type": "array", "items": { "$ref": "#/$defs/path" }, "uniqueItems": true },
+        "env": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z_][A-Z0-9_]*$" }, "uniqueItems": true }
+      }
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^\\$(PACKAGE|PROJECT|CACHE|TEMP)(/[^/]+)*$"
+    }
+  }
+}
