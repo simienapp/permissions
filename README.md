@@ -50,5 +50,3 @@ grant as narrow as the code needs.
 
 Simien pins a commit of this repository; a change reaches users when the
 runtime bumps the pin.
-
--claude
