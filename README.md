@@ -33,6 +33,10 @@ every entry says why it is there.
 ```
 
 - `install` applies to the package's install scripts, `x` to `s x <package>`.
+- `dangerouslyUseNode: true` gives the package's programs Node's APIs
+  ([APS 2](https://github.com/simienapp/aps/issues/2)): Simien runs them
+  itself, still in the sandbox and under every other rule here. Only
+  packages whose programs are Node programs people need belong here.
 - `net`: hosts (optionally `host:port`). Until Simien filters by host, any
   `net` grant turns the network on; the hosts are recorded so the grant
   narrows automatically when it does.
