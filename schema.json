@@ -22,7 +22,11 @@
       "properties": {
         "reason": { "type": "string", "minLength": 10 },
         "install": { "$ref": "#/$defs/grant" },
-        "x": { "$ref": "#/$defs/grant" }
+        "x": { "$ref": "#/$defs/grant" },
+        "dangerouslyUseNode": {
+          "const": true,
+          "description": "Node's APIs for the package's programs (Simien APS 2). Only true is accepted; leave it out otherwise."
+        }
       }
     },
     "grant": {
