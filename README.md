@@ -54,3 +54,7 @@ grant as narrow as the code needs.
 
 Simien pins a commit of this repository; a change reaches users when the
 runtime bumps the pin.
+
+## License
+
+[CC0 1.0](LICENSE): the list is in the public domain, so anyone may reuse it without asking.
